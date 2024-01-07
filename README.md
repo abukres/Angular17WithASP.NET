@@ -1,5 +1,5 @@
 
-This is an unfinished ASP.NET 8 and Angular 17 web application. The app is based on the 'Angular and ASP.NET Core' project template in Visual Studio 2022. The goal was to use DevExpress' <a href="https://github.com/DevExpress/devextreme-ui-template-gallery?tab=readme-ov-file" target="_blank">DevExtreme UI Template Gallery</a> Angular application and use it as the client side of an ASP.NET application to demonstrate a nice looking line of business (LOB) app.  
+This is an unfinished basic ASP.NET 8 and Angular 17 web application. The app is based on the 'Angular and ASP.NET Core' project template in Visual Studio 2022. The goal was to use DevExpress' <a href="https://github.com/DevExpress/devextreme-ui-template-gallery?tab=readme-ov-file" target="_blank">DevExtreme UI Template Gallery</a> Angular application and use it as the client side of an ASP.NET application to demonstrate a nice looking line of business (LOB) app.  
 I noticed most if not all the asp.net apps on Github lack any UI or use a very simplistic UI. I decided someone should show a good UI.
 
 The original DevExpress' UI gets all its data from DevExpress' web services. I copied and modified their Angular version so that it runs as part of the asp.net app as the web client part. The 'Contact List' section now gets its data from the asp.net back end which gets it from the database. The goal was to do the same type of conversion for the rest of the UI but I stopped short and moved on to concentrate on Blazor. The back end is based on the clean architecture pattern and the same worflow of endpoint -> services -> repository -> database can be applied to the rest of the application using the same convention. 
@@ -15,6 +15,7 @@ The UI is based on DevExpress' DevExtreme which is a full featured and polished 
 * Update the DefaultConnectionString value if necessary in the appsettings.json file in the Server project.
 
 #### Instructions for running the app:
+* (There's an issue where the solution takes several minutes to load in VS 2022. Not sure yet if it's a local issue.)
 * After setting up the database and the connection string, make the Server project the startup project. Run the app and it will launch the browser with the page loaded with contacts. The initial page will show a broken page then auto refreshes and renders properly. This should be fixed.
 
 #### TO DO list (Currently no plan to finish them):
