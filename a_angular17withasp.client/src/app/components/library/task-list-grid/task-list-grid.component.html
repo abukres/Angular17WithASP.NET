@@ -1,0 +1,131 @@
+<dx-data-grid
+  id="tasks-grid"
+  height="100%"
+  [dataSource]="tasks"
+  (onRowPrepared)="onRowPreparedGrid($event)"
+  (onRowClick)="navigateToDetails($event)"
+  (onEditingStart)="toogleUseNavigation()"
+  (onEditCanceled)="toogleUseNavigation()"
+  (onSaved)="toogleUseNavigation()"
+  [hoverStateEnabled]="true"
+  [columnAutoWidth]="true"
+>
+  <dxo-paging [pageSize]="15"></dxo-paging>
+  <dxo-pager [visible]="true" [showPageSizeSelector]="true"></dxo-pager>
+  <dxo-editing mode="row" [allowUpdating]="true"> </dxo-editing>
+  <dxo-selection
+    selectAllMode="allPages"
+    showCheckBoxesMode="always"
+    mode="multiple"
+  ></dxo-selection>
+  <dxo-scrolling mode="virtual"></dxo-scrolling>
+  <dxo-sorting mode="multiple"></dxo-sorting>
+  <dxo-header-filter [visible]="true"></dxo-header-filter>
+
+  <dxi-column dataField="text" caption="Subject" [hidingPriority]="7">
+    <dxi-validation-rule type="required"></dxi-validation-rule>
+  </dxi-column>
+  <dxi-column dataField="company" caption="Company" [hidingPriority]="6">
+    <dxi-validation-rule type="required"></dxi-validation-rule>
+  </dxi-column>
+  <dxi-column
+    dataField="priority"
+    caption="Priority"
+    [hidingPriority]="4"
+    cellTemplate="cellPriority"
+    editCellTemplate="editCellPriority"
+  >
+    <dxo-lookup [dataSource]="priorityList"></dxo-lookup>
+    <dxi-validation-rule type="required"></dxi-validation-rule>
+  </dxi-column>
+  <dxi-column
+    dataField="startDate"
+    caption="Start Date"
+    dataType="date"
+    [hidingPriority]="2"
+  >
+    <dxi-validation-rule type="required"></dxi-validation-rule>
+  </dxi-column>
+  <dxi-column
+    dataField="dueDate"
+    caption="Due Date"
+    dataType="date"
+    sortOrder="asc"
+    [hidingPriority]="1"
+  >
+    <dxi-validation-rule type="required"></dxi-validation-rule>
+  </dxi-column>
+  <dxi-column dataField="owner" caption="Owner" [hidingPriority]="5">
+    <dxi-validation-rule type="required"></dxi-validation-rule>
+  </dxi-column>
+  <dxi-column
+    dataField="status"
+    caption="Status"
+    [hidingPriority]="3"
+    [minWidth]="120"
+    cellTemplate="cellStatus"
+    editCellTemplate="editCellStatus"
+  >
+    <dxo-lookup [dataSource]="statusList"></dxo-lookup>
+    <dxi-validation-rule type="required"></dxi-validation-rule>
+  </dxi-column>
+
+  <div *dxTemplate="let cellInfo of 'cellPriority'">
+    <status-indicator
+      [isField]="false"
+      [showBar]="true"
+      [value]="cellInfo.data.priority"
+    >
+    </status-indicator>
+  </div>
+
+  <div *dxTemplate="let cellInfo of 'editCellPriority'">
+    <dx-select-box
+      class="edit-cell"
+      [(value)]="cellInfo.value"
+      [items]="priorityList"
+      (onValueChanged)="cellInfo.setValue($event.value)"
+      (onSelectionChanged)="cellInfo.component.updateDimensions()"
+      fieldTemplate="field"
+    >
+      <div *dxTemplate="let data of 'field'">
+        <status-indicator
+          [showBar]="true"
+          [value]="cellInfo.value"
+        ></status-indicator>
+      </div>
+      <div *dxTemplate="let data of 'item'">
+        <status-indicator
+          [showBar]="true"
+          [isField]="false"
+          [value]="data"
+        ></status-indicator>
+      </div>
+    </dx-select-box>
+  </div>
+
+  <div *dxTemplate="let cellInfo of 'cellStatus'">
+    <status-indicator
+      [isField]="false"
+      [value]="cellInfo.data.status"
+    ></status-indicator>
+  </div>
+
+  <div *dxTemplate="let cellInfo of 'editCellStatus'">
+    <dx-select-box
+      class="edit-cell"
+      [(value)]="cellInfo.value"
+      [items]="statusList"
+      (onValueChanged)="cellInfo.setValue($event.value)"
+      (onSelectionChanged)="cellInfo.component.updateDimensions()"
+      fieldTemplate="field"
+    >
+      <div *dxTemplate="let data of 'field'">
+        <status-indicator [value]="cellInfo.value"></status-indicator>
+      </div>
+      <div *dxTemplate="let s of 'item'">
+        <status-indicator [isField]="false" [value]="s"></status-indicator>
+      </div>
+    </dx-select-box>
+  </div>
+</dx-data-grid>

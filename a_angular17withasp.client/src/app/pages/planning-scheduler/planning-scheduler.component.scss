@@ -1,0 +1,78 @@
+@use "../../../variables.scss" as *;
+
+@include separator();
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+
+  .view-wrapper {
+    position: relative;
+    flex-direction: column;
+    display: flex;
+    height: inherit;
+
+    .panels {
+      display: flex;
+      flex-wrap: wrap;
+      height: inherit;
+      justify-content: center;
+      gap: 16px;
+      padding: var(--content-padding) var(--content-padding) var(--theme-padding);
+
+      .left-side-panel-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--theme-padding);
+
+        .buttons {
+          display: flex;
+          width: 100%;
+          gap: 16px;
+          margin-top: var(--theme-padding);
+          padding: 0 var(--theme-padding);
+
+          .dx-button {
+            width: calc((100% - var(--theme-padding)) / 2);
+            font-size: 13px;
+            border-radius: 4px;
+          }
+        }
+
+        .calendar {
+          align-self: center;
+          padding: var(--theme-padding);
+
+          .dx-calendar {
+            width: var(--calendar-width);
+          }
+        }
+      }
+
+      .scheduler-container {
+        flex: 1;
+        height: inherit;
+        border: 1px grey;
+        border-radius: 8px;
+
+        ::ng-deep {
+          .dx-scheduler-header {
+            border-radius: 8px 8px 0 0;
+            height: var(--scheduler-toolbar-height);
+          }
+
+          .dx-scheduler-appointment-content {
+            color: #333;
+          }
+
+          .dx-scheduler-work-space {
+            border-radius: 0 0 8px 8px;
+          }
+        }
+      }
+    }
+  }
+}

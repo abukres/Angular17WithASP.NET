@@ -1,0 +1,137 @@
+<div class="view-wrapper">
+  <dx-toolbar>
+    <dxi-item location="before">
+      <span class="toolbar-header">Tasks</span>
+    </dxi-item>
+    <dxi-item location="before">
+      <dx-tabs
+        [width]="(screen.xSmallScreenChanged | async) ? 220 : 'auto'"
+        [showNavButtons]="false"
+        [scrollByContent]="true"
+        [selectedIndex]="0"
+        [items]="taskPanelItems"
+        (onItemClick)="tabValueChange($event)"
+      ></dx-tabs>
+    </dxi-item>
+
+    <dxi-item location="after" locateInMenu="auto">
+      <dx-button
+        icon="plus"
+        text="Add Task"
+        type="default"
+        stylingMode="contained"
+        (onClick)="addTask()"
+      ></dx-button>
+    </dxi-item>
+
+    <dxi-item
+      location="after"
+      locateInMenu="auto"
+      widget="dxButton"
+      showText="inMenu"
+      [options]="{
+        text: 'Refresh',
+        icon: 'refresh',
+        onClick: refresh,
+        stylingMode: 'text'
+      }"
+    ></dxi-item>
+
+    <dxi-item
+      location="after"
+      locateInMenu="auto"
+      widget="dxButton"
+      showText="inMenu"
+      [disabled]="!displayGrid"
+      [options]="{
+        text: 'Column Chooser',
+        icon: 'columnchooser',
+        onClick: chooseColumnDataGrid,
+        stylingMode: 'text'
+      }"
+    ></dxi-item>
+
+    <dxi-item location="after" locateInMenu="auto">
+      <div class="separator"></div>
+    </dxi-item>
+
+    <dxi-item
+      location="after"
+      locateInMenu="auto"
+      widget="dxButton"
+      showText="inMenu"
+      [disabled]="displayKanban"
+      [options]="{
+        text: 'Export to PDF',
+        icon: 'exportpdf',
+        onClick: exportToPdf,
+        stylingMode: 'text'
+      }"
+    ></dxi-item>
+
+    <dxi-item
+      location="after"
+      locateInMenu="auto"
+      widget="dxButton"
+      showText="inMenu"
+      [disabled]="!displayGrid"
+      [options]="{
+        text: 'Export to Exel',
+        icon: 'exportxlsx',
+        onClick: exportDataGridToXSLX,
+        stylingMode: 'text'
+      }"
+    ></dxi-item>
+
+    <dxi-item
+      location="after"
+      locateInMenu="auto"
+      widget="dxTextBox"
+      [disabled]="!displayGrid"
+      [options]="{
+        placeholder: 'Task Search',
+        mode: 'search',
+        onInput: searchDataGrid
+      }"
+    ></dxi-item>
+  </dx-toolbar>
+  <ng-container
+    *ngIf="taskCollections$ | async as taskCollections; else loading"
+  >
+    <ng-container *ngIf="taskCollections" [ngSwitch]="displayTaskComponent">
+      <div *ngSwitchCase="taskPanelItems[0].text" class="grid">
+        <task-list-grid
+          #planningDataGrid
+          [dataSource]="taskCollections.allTasks"
+          (tabValueChanged)="tabValueChange($event)"
+        >
+        </task-list-grid>
+      </div>
+      <div *ngSwitchCase="taskPanelItems[1].text" class="kanban">
+        <task-list-kanban
+          #planningKanban
+          [dataSource]="taskCollections.filteredTasks"
+          (addTaskEvent)="addTask()"
+        ></task-list-kanban>
+      </div>
+      <div *ngSwitchCase="taskPanelItems[2].text" class="gantt">
+        <task-list-gantt
+          #planningGantt
+          [dataSource]="taskCollections.filteredTasks"
+        ></task-list-gantt>
+      </div>
+    </ng-container>
+  </ng-container>
+  <ng-template #loading>
+    <dx-load-panel
+      [visible]="true"
+      [showPane]="false"
+      container=".content"
+      [position]="{ of: '.content' }"
+    >
+    </dx-load-panel>
+  </ng-template>
+  <form-popup [(visible)]="isAddTaskPopupOpened" (save)= "onClickSaveNewTask()" titleText="New Task">
+    <task-form [task]="newTask" [isCreateMode]="true"></task-form>
+  </form-popup>
+</div>

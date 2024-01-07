@@ -1,0 +1,42 @@
+@use "../../../../variables.scss" as *;
+@use "sass:math";
+
+.panel {
+  @include shadow();
+
+  width: 100%;
+  padding: 0 0 var(--content-padding) 0;
+  border-radius: 8px;
+  background-color: var(--card-background);
+
+  .panel-header {
+    padding: var(--content-padding);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .top-item-wrapper {
+    display: flex;
+  }
+
+  &::ng-deep {
+    [top-item] {
+      display: flex;
+      min-height: 50px;
+
+      & > div {
+        display: flex;
+        flex-flow: column;
+        gap: 5px;
+      }
+    }
+
+    .dx-field-item {
+      padding-top: calc(var(--content-padding) / 2);
+      padding-right: 0;
+    }
+  }
+
+  .form-container {
+    margin: calc(var(--content-padding) * 2) var(--content-padding) 0;
+  }
+}

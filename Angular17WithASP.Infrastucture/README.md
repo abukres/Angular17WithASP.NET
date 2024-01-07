@@ -1,0 +1,1 @@
+﻿This project would contain classes for accessing external resources such as file systems, web services, smtp, and databases. It is a high-level layer which communicates with the external world.

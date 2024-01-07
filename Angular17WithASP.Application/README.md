@@ -1,0 +1,1 @@
+﻿This project would contain all business logic and types. It depends on the domain layer but has no dependencies on any other layer. This layer defines interfaces that are implemented by outside layers.

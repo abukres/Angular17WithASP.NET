@@ -1,0 +1,39 @@
+@use "../../../variables.scss" as *;
+@use "sass:math";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+}
+
+.view-wrapper {
+  padding: var(--content-padding);
+
+  .cards {
+    display: grid;
+    width: 100%;
+    gap: 20px;
+    grid-template-columns: repeat(2, calc(50% - 10px));
+
+    &.wide {
+      grid-template-columns: repeat(1, 100%);
+      margin-right: 0;
+    }
+  }
+
+  @media only screen and (max-width: 900px) {
+    .cards {
+      grid-template-columns: repeat(1, 100%);
+    }
+  }
+}
+
+::ng-deep {
+  .dx-toolbar {
+    .toolbar-header {
+      @include header();
+    }
+  }
+}

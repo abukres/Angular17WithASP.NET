@@ -1,0 +1,10 @@
+@use "../../../variables.scss" as *;
+
+:host {
+  width: 100%;
+  height: 100%;
+}
+
+.single-card {
+  height: 100%;
+}

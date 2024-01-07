@@ -1,0 +1,115 @@
+:root {
+  .dx-theme-generic {
+    --change-password-popup-height: 190px;
+  }
+
+  .dx-theme-material {
+    --change-password-popup-height: 260px;
+  }
+}
+
+@mixin separator() {
+  .h-separator {
+    height: 1px;
+    width: auto;
+    background: var(--border-color);
+  }
+
+  .separator {
+    height: 24px;
+    width: 1px;
+    background: var(--border-color);
+
+    ::ng-deep .dx-toolbar-menu-section & {
+      height: 1px;
+      width: auto;
+    }
+  }
+}
+
+@mixin shadow() {
+  box-shadow: 0 1px 4px 0 #00000026;
+}
+
+@mixin header {
+  font-size: 22px;
+  font-weight: 500;
+  padding-right: 25px;
+}
+
+@mixin message-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--texteditor-label-color);
+}
+
+@mixin message-text {
+  padding-top: 5px;
+  line-height: 21px;
+}
+
+@mixin messages-content {
+  .messages-content {
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--side-panel-background);
+  }
+}
+
+@mixin status($status-color) {
+  color: $status-color;
+
+  &.dx-texteditor {
+    .status-input.status-editor-input {
+      color: $status-color;
+    }
+  }
+
+  &::before {
+    background: $status-color;
+  }
+}
+
+@mixin calendar-items-text {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+@mixin description-text($opacity) {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  opacity: $opacity;
+}
+
+@mixin h1-header-text {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+@mixin h2-header-text {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+@mixin subtext($opacity: 1) {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  opacity: $opacity;
+}

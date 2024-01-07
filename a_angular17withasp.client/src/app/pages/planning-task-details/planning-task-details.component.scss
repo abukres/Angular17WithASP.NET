@@ -1,0 +1,40 @@
+@use "../../../variables.scss" as *;
+
+:host {
+  --left-panel-width: 400px;
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+}
+
+.dx-toolbar ::ng-deep {
+  margin-bottom: calc(var(--toolbar-margin-bottom) / 2);
+
+  .dx-toolbar-label > div {
+    @include header();
+  }
+}
+
+.view-wrapper {
+  padding: var(--content-padding) var(--content-padding) 0 var(--content-padding);
+
+  .panels {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+
+    .left {
+      flex: 1 400px;
+      margin-top: 8px;
+    }
+
+    .right {
+      flex: 1 calc(100% - 400px - 20px);
+      margin-top: 8px;
+      min-width: 340px;
+    }
+  }
+}
