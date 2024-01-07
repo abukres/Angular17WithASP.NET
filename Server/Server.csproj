@@ -5,16 +5,16 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>false</InvariantGlobalization>
-    <SpaRoot>..\a_angular17withasp.client</SpaRoot>
+    <SpaRoot>..\Client</SpaRoot>
     <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
     <SpaProxyServerUrl>https://localhost:4200</SpaProxyServerUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Angular17WithASP.Application\Angular17WithASP.Application.csproj" />
-    <ProjectReference Include="..\Angular17WithASP.Core\Angular17WithASP.Domain.csproj" />
-    <ProjectReference Include="..\Angular17WithASP.Infrastucture\Angular17WithASP.Infrastucture.csproj" />
-    <ProjectReference Include="..\a_angular17withasp.client\Angular17withasp.Client.esproj">
+    <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Core\Domain.csproj" />
+    <ProjectReference Include="..\Infrastucture\Infrastucture.csproj" />
+    <ProjectReference Include="..\Client\Client.esproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>

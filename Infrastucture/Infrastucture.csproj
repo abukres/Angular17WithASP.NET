@@ -17,8 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Angular17WithASP.Application\Angular17WithASP.Application.csproj" />
-    <ProjectReference Include="..\Angular17WithASP.Core\Angular17WithASP.Domain.csproj" />
+    <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Core\Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Angular17WithASP.Server", "a_Angular17WithASP.Server\Angular17WithASP.Server.csproj", "{76281F53-D505-4E56-903E-B40588EC2047}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "Server\Server.csproj", "{76281F53-D505-4E56-903E-B40588EC2047}"
 EndProject
-Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Angular17withasp.Client", "a_angular17withasp.client\Angular17withasp.Client.esproj", "{D5EB2EBA-79B2-459D-81B6-5653220A69C4}"
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Client", "Client\Client.esproj", "{D5EB2EBA-79B2-459D-81B6-5653220A69C4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Angular17WithASP.Domain", "Angular17WithASP.Core\Angular17WithASP.Domain.csproj", "{39AB2FC0-E630-434A-8F77-D627EB29DF4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Core\Domain.csproj", "{39AB2FC0-E630-434A-8F77-D627EB29DF4B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Angular17WithASP.Infrastucture", "Angular17WithASP.Infrastucture\Angular17WithASP.Infrastucture.csproj", "{A5F64AE0-D6C7-48EA-A181-C6D2EADA313B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastucture", "Infrastucture\Infrastucture.csproj", "{A5F64AE0-D6C7-48EA-A181-C6D2EADA313B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Angular17WithASP.Application", "Angular17WithASP.Application\Angular17WithASP.Application.csproj", "{77F59361-A0D5-45C2-A6D3-6F6ADE7A04D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{77F59361-A0D5-45C2-A6D3-6F6ADE7A04D4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{10A8F887-183C-4072-A804-6568D661274F}"
 EndProject
